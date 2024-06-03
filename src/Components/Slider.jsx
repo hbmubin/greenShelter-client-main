@@ -1,6 +1,6 @@
 const Slider = () => {
   return (
-    <div className="carousel relative max-h-[90vh] w-full">
+    <div className="carousel relative max-h-screen w-full">
       <div id="slide1" className="carousel-item relative w-full">
         <img
           src="../../src/assets/hero-real-estate-facts-trends.jpeg"
