@@ -1,20 +1,52 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { loginUser } = useContext(AuthContext);
-
+  const { loginUser, googleLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
-    loginUser(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
+    loginUser(email, password)
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(location?.state ? location.state : "/");
+        event.target.reset();
+      })
+      .catch(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "email or password doesn't match",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate(location?.state ? location.state : "/");
     });
   };
 
@@ -58,7 +90,10 @@ const Login = () => {
         <hr className="my-4" />
         <div className="text-center text-xl">
           <div className="text-neutral-600">or</div>
-          <div className="flex cursor-pointer justify-center w-full border-2 hover:text-orange-400 hover:border-orange-400 duration-300 rounded-3xl py-2 my-2">
+          <div
+            onClick={handleGoogleLogin}
+            className="flex cursor-pointer justify-center w-full border-2 hover:text-orange-400 hover:border-orange-400 duration-300 rounded-3xl py-2 my-2"
+          >
             <div className="flex gap-2 items-center">
               <FcGoogle></FcGoogle> <span>Google</span>
             </div>

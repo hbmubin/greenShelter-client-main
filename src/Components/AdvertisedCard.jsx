@@ -1,7 +1,7 @@
 import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const PropertiesCard = ({ property }) => {
+const AdvertisedCard = ({ property }) => {
   const {
     propertyImage,
     propertyTitle,
@@ -25,9 +25,9 @@ const PropertiesCard = ({ property }) => {
         />
         <div
           style={liner}
-          className="absolute h-full w-full flex items-end justify-between rounded-3xl"
+          className=" absolute h-full w-full flex justify-between items-end  rounded-3xl"
         >
-          <div className="ml-2 text-white">
+          <div className="ml-2 mb-2 text-white">
             {priceRange.map((p, idx) => (
               <span key={idx}>
                 ${p}
@@ -35,25 +35,21 @@ const PropertiesCard = ({ property }) => {
               </span>
             ))}
           </div>
-          <div className="text-green-400 text-lg mr-4">{status}</div>
+          <div className="text-green-400 mb-2 text-lg mr-4">{status}</div>
         </div>
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">{propertyTitle}</h2>
-        <div className="flex items-center gap-2">
-          <MdLocationOn size={24} color="orange"></MdLocationOn>
-          <p>{propertyLocation}</p>
-        </div>
-        <div className="bg-gray-100 w-full p-2 flex gap-4 items-center  rounded-3xl">
-          <div className="w-14 rounded-full overflow-hidden">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-          </div>
-          <div>
-            <div className="font-medium text-neutral-600">Agent:</div>
-            <div className="font-medium">{agentName}</div>
+      <div className="card-body flex text-center justify-center">
+        <h2 className="card-title flex text-center justify-center">
+          {propertyTitle}
+        </h2>
+        <div className="flex items-center text-center justify-center">
+          <div className="flex items-center  gap-2">
+            <MdLocationOn size={24} color="orange"></MdLocationOn>
+            <p>{propertyLocation}</p>
           </div>
         </div>
-        <div className="card-actions">
+
+        <div className="card-actions flex text-center justify-center">
           <Link
             className="btn rounded-full bg-orange-400 text-white"
             to={`/property/${property._id}`}
@@ -66,4 +62,4 @@ const PropertiesCard = ({ property }) => {
   );
 };
 
-export default PropertiesCard;
+export default AdvertisedCard;

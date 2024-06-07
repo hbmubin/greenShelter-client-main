@@ -1,6 +1,25 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Header = () => {
+  const { user, loading, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logout Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => console.log(error));
+  };
+
   const links = (
     <>
       <li>
@@ -17,10 +36,59 @@ const Header = () => {
         </NavLink>
       </li>
       <li>
-        <NavLink className="hover:text-orange-400 duration-300" to="/dashboard">
+        <NavLink
+          className="hover:text-orange-400 duration-300"
+          to="/dashboard/user-profile"
+        >
           Dashboard
         </NavLink>
       </li>
+    </>
+  );
+
+  const navEnd = (
+    <>
+      {loading ? (
+        <>
+          <span className="loading loading-ring loading-lg"></span>
+        </>
+      ) : (
+        <>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 bg-gray-200 py-1 px-2 rounded-full bg-opacity-20">
+                <div>{user.displayName}</div>
+                <div className="avatar">
+                  <div className="w-12 rounded-full">
+                    <img src={user.photoURL} />
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={handleLogOut}
+                className="py-3 px-5  rounded-3xl bg-orange-400 hover:bg-orange-300 duration-300"
+              >
+                Logout
+              </button>
+            </div>
+          ) : (
+            <>
+              <NavLink
+                className="py-3 px-5 rounded-s-3xl bg-orange-400 hover:bg-orange-300 duration-300"
+                to="/login"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                className="py-3 px-5  rounded-e-3xl bg-orange-400 hover:bg-orange-300 duration-300"
+                to="/register"
+              >
+                Register
+              </NavLink>
+            </>
+          )}
+        </>
+      )}
     </>
   );
 
@@ -58,20 +126,7 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu text-lg  menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <NavLink
-          className="py-3 px-5 rounded-s-3xl bg-orange-400 hover:bg-orange-300 duration-300"
-          to="/login"
-        >
-          Login
-        </NavLink>
-        <NavLink
-          className="py-3 px-5  rounded-e-3xl bg-orange-400 hover:bg-orange-300 duration-300"
-          to="/register"
-        >
-          Register
-        </NavLink>
-      </div>
+      <div className="navbar-end">{navEnd}</div>
     </header>
   );
 };

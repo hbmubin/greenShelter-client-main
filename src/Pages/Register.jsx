@@ -1,14 +1,19 @@
 import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useForm } from "react-hook-form";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, googleLogin } = useContext(AuthContext);
+
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -16,6 +21,28 @@ const Register = () => {
     createUser(data.email, data.password).then((result) => {
       const user = result.user;
       console.log(user);
+      updateProfile(result.user, {
+        displayName: data.name,
+        photoURL: data.photo,
+      })
+        .then(() => {
+          navigate("/");
+          reset();
+        })
+        .catch((error) => console.log(error));
+    });
+  };
+
+  const handleGoogleLogin = () => {
+    console.log("pressed");
+    googleLogin().then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Login successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     });
   };
 
@@ -113,7 +140,10 @@ const Register = () => {
         <div className="text-center text-xl">
           <div className="text-neutral-600">or</div>
           <div className="flex cursor-pointer justify-center w-full border-2 hover:text-orange-400 hover:border-orange-400 duration-300 rounded-3xl py-2 my-2">
-            <div className="flex gap-2 items-center">
+            <div
+              onClick={handleGoogleLogin}
+              className="flex gap-2 items-center"
+            >
               <FcGoogle></FcGoogle> <span>Google</span>
             </div>
           </div>
