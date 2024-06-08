@@ -19,27 +19,63 @@ const Register = () => {
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
-      const user = result.user;
-      console.log(user);
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+        photoURL: data.photo,
+      };
+
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            navigate("/");
+            reset();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Registration successful",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+
       updateProfile(result.user, {
         displayName: data.name,
         photoURL: data.photo,
       })
-        .then(() => {
-          navigate("/");
-          reset();
-        })
+        .then(() => {})
         .catch((error) => console.log(error));
     });
   };
 
   const handleGoogleLogin = () => {
-    console.log("pressed");
-    googleLogin().then(() => {
+    googleLogin().then((result) => {
+      const userInfo = {
+        email: result.user.email,
+        name: result.user.displayName,
+        photoURL: result.user.photoURL,
+      };
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      }).then((res) => res.json());
+      navigate("/");
+      reset();
       Swal.fire({
         position: "top-end",
         icon: "success",
-        title: "Login successful",
+        title: "Registration successful",
         showConfirmButton: false,
         timer: 1500,
       });

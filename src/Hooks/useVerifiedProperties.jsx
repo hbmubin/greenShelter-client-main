@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
+import useAxiosPublic from "./useAxiosPublic";
+import { useQuery } from "@tanstack/react-query";
 
 const useVerifiedProperties = () => {
-  const [properties, setProperties] = useState([]);
-  const [propertiesLoading, setPropertiesLoading] = useState(true);
-  useEffect(() => {
-    fetch("http://localhost:5000/verified-properties")
-      .then((res) => res.json())
-      .then((data) => {
-        setProperties(data);
-        setPropertiesLoading(false);
-      });
-  }, []);
+  const axiosPublic = useAxiosPublic();
+  const { data: properties = [] } = useQuery({
+    queryKey: ["properties"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/verified-properties");
+      return res.data;
+    },
+  });
 
-  return [properties, propertiesLoading];
+  return [properties];
 };
 
 export default useVerifiedProperties;

@@ -38,7 +38,19 @@ const Login = () => {
   };
 
   const handleGoogleLogin = () => {
-    googleLogin().then(() => {
+    googleLogin().then((result) => {
+      const userInfo = {
+        email: result.user.email,
+        name: result.user.displayName,
+        photoURL: result.user.photoURL,
+      };
+      fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      }).then((res) => res.json());
       Swal.fire({
         position: "top-end",
         icon: "success",

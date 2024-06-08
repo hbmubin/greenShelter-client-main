@@ -8,11 +8,16 @@ import PrivateRoute from "./PrivateRoute";
 import PropertyDetails from "../Pages/PropertyDetails";
 import Dashboard from "../Layout/Dashboard";
 import UserProfile from "../Dashboard/UserProfile";
+import UserWishlist from "../Dashboard/UserWishlist";
+import UserBought from "../Dashboard/UserBought";
+import UserReviews from "../Dashboard/UserReviews";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -45,10 +50,24 @@ export const router = createBrowserRouter([
   {
     path: "dashboard",
     element: <Dashboard></Dashboard>,
+    errorElement: <ErrorPage></ErrorPage>,
+
     children: [
       {
         path: "user-profile",
         element: <UserProfile></UserProfile>,
+      },
+      {
+        path: "user-wishlist",
+        element: <UserWishlist></UserWishlist>,
+      },
+      {
+        path: "user-bought",
+        element: <UserBought></UserBought>,
+      },
+      {
+        path: "user-reviews",
+        element: <UserReviews></UserReviews>,
       },
     ],
   },

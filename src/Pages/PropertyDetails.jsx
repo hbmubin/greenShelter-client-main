@@ -2,8 +2,10 @@ import { FaUser } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 import PropertyReviews from "../Components/PropertyReviews";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const PropertyDetails = () => {
+  const axiosPublic = useAxiosPublic();
   const property = useLoaderData();
   const {
     propertyImage,
@@ -11,11 +13,17 @@ const PropertyDetails = () => {
     propertyLocation,
     agentName,
     agentImage,
-    status,
     priceRange,
-    reviews,
     propertyDescriptions,
   } = property;
+
+  const handleAddWishlist = () => {
+    const propertyId = property._id;
+
+    axiosPublic.post("/add-wishlist", propertyId).then((res) => {
+      console.log(res.data);
+    });
+  };
   return (
     <div className="py-[15vh]">
       <div className="px-6">
@@ -50,7 +58,10 @@ const PropertyDetails = () => {
                   ))}
                 </div>
                 <div>
-                  <button className="btn rounded-3xl bg-orange-400 border-none text-white">
+                  <button
+                    onClick={handleAddWishlist}
+                    className="btn rounded-3xl bg-orange-400 border-none text-white"
+                  >
                     Add to Wishlist
                   </button>
                 </div>
@@ -65,7 +76,7 @@ const PropertyDetails = () => {
           </div>
         </div>
       </div>
-      <PropertyReviews reviews={reviews}></PropertyReviews>
+      <PropertyReviews property={property}></PropertyReviews>
     </div>
   );
 };
