@@ -3,10 +3,15 @@ import { MdLocationOn } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 import PropertyReviews from "../Components/PropertyReviews";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const PropertyDetails = () => {
+  const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const property = useLoaderData();
+  const [wishlistStatus, setWishlistStatus] = useState(false);
   const {
     propertyImage,
     propertyTitle,
@@ -18,10 +23,24 @@ const PropertyDetails = () => {
   } = property;
 
   const handleAddWishlist = () => {
-    const propertyId = property._id;
-
-    axiosPublic.post("/add-wishlist", propertyId).then((res) => {
-      console.log(res.data);
+    const wishList = { propertyId: property._id };
+    axiosPublic.post(`/add-wishlist/${user.email}`, wishList).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Property added to Wishlist",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: res.data,
+          showConfirmButton: false,
+          timer: 1500,
+        });
     });
   };
   return (
