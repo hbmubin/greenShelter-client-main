@@ -12,6 +12,7 @@ import UserWishlist from "../Dashboard/UserWishlist";
 import UserBought from "../Dashboard/UserBought";
 import UserReviews from "../Dashboard/UserReviews";
 import ErrorPage from "../Pages/ErrorPage";
+import OfferForm from "../Dashboard/OfferForm";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,12 @@ export const router = createBrowserRouter([
       {
         path: "user-reviews",
         element: <UserReviews></UserReviews>,
+      },
+      {
+        path: "make-offer/:id",
+        element: <OfferForm></OfferForm>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/property/${params.id}`),
       },
     ],
   },
