@@ -11,7 +11,6 @@ const PropertyDetails = () => {
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const property = useLoaderData();
-  const [wishlistStatus, setWishlistStatus] = useState(false);
   const {
     propertyImage,
     propertyTitle,

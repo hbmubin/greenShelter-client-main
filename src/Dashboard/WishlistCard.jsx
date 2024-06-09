@@ -95,7 +95,7 @@ const WishlistCard = ({ property }) => {
         <div className="card-actions flex text-center justify-center">
           <Link
             className="btn rounded-full bg-orange-400 text-white"
-            to={`make-offer/${property._id}`}
+            to={`/dashboard/make-offer/${property._id}`}
           >
             Make an offer
           </Link>

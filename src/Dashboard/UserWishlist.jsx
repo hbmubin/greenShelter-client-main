@@ -33,7 +33,6 @@ const UserWishlist = () => {
       </div>
     );
   }
-  console.log(properties);
   return (
     <div>
       <h2 className="py-6 text-xl font-semibold ml-6">
