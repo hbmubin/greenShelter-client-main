@@ -45,7 +45,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className="flex-1">
+      <div className="flex-1 overflow-auto">
         <Outlet></Outlet>
       </div>
     </div>

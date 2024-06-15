@@ -18,7 +18,7 @@ const WishlistCard = ({ property }) => {
     agentName,
     agentImage,
     priceRange,
-    status,
+    propertyStatus,
   } = property;
 
   const handleRemoveWishlist = () => {

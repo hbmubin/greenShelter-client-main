@@ -3,10 +3,12 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useUserWishlist from "../Hooks/useUserWishlist";
 
 const OfferForm = () => {
   const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
+  const [, refetch] = useUserWishlist();
 
   const { user, loading } = useContext(AuthContext);
   const property = useLoaderData();
@@ -48,7 +50,7 @@ const OfferForm = () => {
 
     const response = await axiosPublic.post("/submit-offer", offerData);
     if (response.data.modifiedCount > 0) {
-      navigate("/property-bought");
+      navigate("/dashboard/user-bought");
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -56,6 +58,12 @@ const OfferForm = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+      axiosPublic
+        .delete(`/remove-wishlist/${user.email}/${property._id}`)
+        .then((res) => {
+          console.log(res.data);
+          refetch();
+        });
     } else {
       console.log(response.data);
       Swal.fire({

@@ -9,7 +9,7 @@ const PropertiesCard = ({ property }) => {
     agentName,
     agentImage,
     priceRange,
-    status,
+    propertyStatus,
   } = property;
 
   const liner = {
