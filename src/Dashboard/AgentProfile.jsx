@@ -1,21 +1,27 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
-const UserProfile = () => {
+const AgentProfile = () => {
   const { loading, user } = useContext(AuthContext);
   const [userinfo, setUserinfo] = useState();
   const [userinfoLoading, setUserinfoLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/user/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setUserinfo(data);
+      axiosSecure
+        .get(`http://localhost:5000/user/${user.email}`)
+        .then((response) => {
+          setUserinfo(response.data);
+          setUserinfoLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching user info:", error);
           setUserinfoLoading(false);
         });
     }
-  }, [user]);
+  }, [user, axiosSecure]);
 
   if (loading || userinfoLoading) {
     return (
@@ -24,6 +30,7 @@ const UserProfile = () => {
       </div>
     );
   }
+
   return (
     <div className="w-full flex items-center justify-center min-h-screen">
       <div className="max-w-lg rounded-3xl p-8 sm:flex sm:space-x-6 dark:bg-gray-50 dark:text-gray-800">
@@ -63,4 +70,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default AgentProfile;

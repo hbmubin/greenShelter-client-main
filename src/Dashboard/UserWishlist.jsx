@@ -1,20 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import useUserWishlist from "../Hooks/useUserWishlist";
 import { AuthContext } from "../Providers/AuthProvider";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 import WishlistCard from "./WishlistCard";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const UserWishlist = () => {
   const [wishlist, refetch] = useUserWishlist();
   const { loading } = useContext(AuthContext);
-  const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
 
   const [properties, setProperties] = useState([]);
   useEffect(() => {
     if (wishlist.length > 0) {
       const fetchProperties = async () => {
         const propertyPromises = wishlist.map((id) =>
-          axiosPublic
+          axiosSecure
             .get(`http://localhost:5000/property/${id}`)
             .then((response) => response.data)
         );
@@ -25,7 +25,7 @@ const UserWishlist = () => {
 
       fetchProperties();
     }
-  }, [wishlist, axiosPublic]);
+  }, [wishlist, axiosSecure]);
   if (loading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">
@@ -34,7 +34,7 @@ const UserWishlist = () => {
     );
   }
   return (
-    <div>
+    <div className="py-4">
       <h2 className="py-6 text-xl font-semibold ml-6">
         My Wishlist ({properties.length})
       </h2>

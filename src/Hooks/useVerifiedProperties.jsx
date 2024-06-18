@@ -1,9 +1,9 @@
-import useAxiosPublic from "./useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "./useAxiosPublic";
 
 const useVerifiedProperties = () => {
   const axiosPublic = useAxiosPublic();
-  const { data: properties = [] } = useQuery({
+  const { refetch, data: properties = [] } = useQuery({
     queryKey: ["properties"],
     queryFn: async () => {
       const res = await axiosPublic.get("/verified-properties");
@@ -11,7 +11,7 @@ const useVerifiedProperties = () => {
     },
   });
 
-  return [properties];
+  return [properties, refetch];
 };
 
 export default useVerifiedProperties;

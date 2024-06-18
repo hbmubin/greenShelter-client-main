@@ -3,18 +3,19 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAxiosSecure from "./useAxiosSecure";
 
-const useUserWishlist = () => {
+const useUserReviews = () => {
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
-  const { refetch, data: wishlist = [] } = useQuery({
-    queryKey: ["wishlist", user?.email],
+
+  const { refetch, data: reviews = [] } = useQuery({
+    queryKey: ["reviews", user?.email],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/user-wishlist/${user.email}`);
+      const res = await axiosSecure.get(`/reviews-by-email/${user.email}`);
       return res.data;
     },
   });
 
-  return [wishlist, refetch];
+  return [reviews, refetch];
 };
 
-export default useUserWishlist;
+export default useUserReviews;

@@ -6,6 +6,9 @@ import Swal from "sweetalert2";
 const Header = () => {
   const { user, loading, logOut } = useContext(AuthContext);
 
+  const agent = true;
+  const admin = false;
+
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -38,7 +41,9 @@ const Header = () => {
       <li>
         <NavLink
           className="hover:text-orange-400 duration-300"
-          to="/dashboard/user-profile"
+          to={`/dashboard/${
+            agent ? "agent-profile" : admin ? "admin-profile" : "user-profile"
+          }`}
         >
           Dashboard
         </NavLink>

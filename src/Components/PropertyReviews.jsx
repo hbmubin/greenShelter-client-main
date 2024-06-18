@@ -1,10 +1,36 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useVerifiedProperties from "../Hooks/useVerifiedProperties";
 
 const PropertyReviews = ({ property }) => {
-  const { reviews, propertyTitle, _id } = property;
+  const { reviews, propertyTitle, agentName, _id } = property;
+  const [, refetch] = useVerifiedProperties();
+
   const { user } = useContext(AuthContext);
+
+  const formatTime = (date) => {
+    let hours = date.getHours();
+    const minutes = date.getMinutes();
+    const isPM = hours >= 12;
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+
+    hours = hours % 12 || 12;
+    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+    const period = isPM ? "PM" : "AM";
+
+    return `${hours}:${formattedMinutes} ${period} ${day}/${month}/${year}`;
+  };
+
+  const generateUniqueId = () => {
+    const timestamp = Math.floor(Date.now() / 1000).toString(16);
+    const randomHex = Array.from({ length: 16 }, () =>
+      Math.floor(Math.random() * 16).toString(16)
+    ).join("");
+    return timestamp + randomHex;
+  };
 
   const handleReview = (event) => {
     event.preventDefault();
@@ -13,14 +39,21 @@ const PropertyReviews = ({ property }) => {
     const reviewerEmail = user.email;
     const reviewerImage = user.photoURL;
     const propertyId = _id;
+    const reviewTime = formatTime(new Date());
+    const reviewId = generateUniqueId();
+
     const reviewData = {
+      reviewId,
       reviewDescription,
       reviewerEmail,
       reviewerName,
       propertyId,
       propertyTitle,
       reviewerImage,
+      reviewTime,
+      agentName,
     };
+
     fetch(`http://localhost:5000/property/${_id}/review`, {
       method: "POST",
       headers: {
@@ -31,6 +64,7 @@ const PropertyReviews = ({ property }) => {
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
+          refetch();
           event.target.reset();
           Swal.fire({
             position: "top-end",
@@ -42,23 +76,27 @@ const PropertyReviews = ({ property }) => {
         }
       });
   };
+
   return (
     <div className="bg-gray-100 px-6 mt-16 pb-10">
       <h2 className="text-2xl font-semibold py-6">
         Reviews {"("}
-        {reviews.length}
+        {reviews?.length > 0 ? reviews?.length : "0"}
         {")"}
       </h2>
-      {reviews.map((review, idx) => (
+      {reviews?.map((review) => (
         <div
-          key={idx}
-          className=" flex flex-col w-full  mx-auto mb-4 divide-y rounded-3xl dark:divide-gray-300 dark:bg-gray-50 dark:text-gray-800"
+          key={review.reviewId}
+          className="flex flex-col w-full mx-auto mb-4 divide-y rounded-3xl dark:divide-gray-300 dark:bg-gray-50 dark:text-gray-800"
         >
           <div className="flex justify-between p-4">
             <div className="flex gap-4 items-center">
               <div>
                 <img
-                  src="https://source.unsplash.com/100x100/?portrait"
+                  src={
+                    review.reviewerImage ||
+                    "https://source.unsplash.com/100x100/?portrait"
+                  }
                   alt=""
                   className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
                 />

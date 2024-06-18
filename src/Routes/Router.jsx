@@ -13,6 +13,11 @@ import UserBought from "../Dashboard/UserBought";
 import UserReviews from "../Dashboard/UserReviews";
 import ErrorPage from "../Pages/ErrorPage";
 import OfferForm from "../Dashboard/OfferForm";
+import AgentProfile from "../Dashboard/AgentProfile";
+import AgentAddedProperty from "../Dashboard/AgentAddedProperty";
+import AgentSoldProperty from "../Dashboard/AgentSoldProperty";
+import AgentRequestProperty from "../Dashboard/AgentRequestProperty";
+import AgentAddProperty from "../Dashboard/AgentAddProperty";
 
 export const router = createBrowserRouter([
   {
@@ -50,7 +55,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage></ErrorPage>,
 
     children: [
@@ -75,6 +84,26 @@ export const router = createBrowserRouter([
         element: <OfferForm></OfferForm>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/property/${params.id}`),
+      },
+      {
+        path: "agent-profile",
+        element: <AgentProfile></AgentProfile>,
+      },
+      {
+        path: "agent-addProperty",
+        element: <AgentAddProperty></AgentAddProperty>,
+      },
+      {
+        path: "agent-addedProperty",
+        element: <AgentAddedProperty></AgentAddedProperty>,
+      },
+      {
+        path: "agent-soldProperty",
+        element: <AgentSoldProperty></AgentSoldProperty>,
+      },
+      {
+        path: "agent-requestedProperty",
+        element: <AgentRequestProperty></AgentRequestProperty>,
       },
     ],
   },

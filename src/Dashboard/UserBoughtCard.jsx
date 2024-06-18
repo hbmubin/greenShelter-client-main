@@ -1,17 +1,21 @@
 import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const UserBoughtCard = ({ boughtPropertyInfo }) => {
+const UserBoughtCard = ({ property }) => {
+  const { propertyDetails } = property;
+  const { offeredAmount, offeredDate, boughtStatus } = property;
   const {
     propertyImage,
     propertyTitle,
     propertyLocation,
     agentName,
     agentImage,
-    offeredAmount,
-    broughtStatus,
-  } = boughtPropertyInfo;
-  console.log(boughtPropertyInfo);
+    propertyStatus,
+  } = propertyDetails;
+  console.log(property);
+  // console.log(boughtPropertyInfo);
+  // console.log(boughtPropertyInfo.broughtStatus);
+  console.log(boughtStatus);
 
   return (
     <div className="card duration-300 rounded-3xl bg-base-100 border-[1px] shadow-md">
@@ -41,10 +45,10 @@ const UserBoughtCard = ({ boughtPropertyInfo }) => {
 
           <div>
             <div className="">Status</div>
-            <div className="btn rounded-3xl bg-gray-300">{broughtStatus}</div>
+            <div className="btn rounded-3xl bg-gray-300">{boughtStatus}</div>
           </div>
         </div>
-        {broughtStatus == "accepted" && (
+        {boughtStatus == "accepted" && (
           <div className="btn rounded-3xl bg-green-400 text-white mt-4">
             Pay Now
           </div>

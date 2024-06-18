@@ -23,9 +23,10 @@ const Register = () => {
         name: data.name,
         email: data.email,
         photoURL: data.photo,
+        role: "user",
       };
-
-      fetch("http://localhost:5000/users", {
+      console.log(userInfo);
+      fetch(`http://localhost:5000/users/${userInfo.email}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,25 +35,21 @@ const Register = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          if (data.insertedId) {
-            navigate("/");
-            reset();
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "Registration successful",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
+          navigate("/");
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Registration successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         });
 
       updateProfile(result.user, {
         displayName: data.name,
         photoURL: data.photo,
-      })
-        .then(() => {})
-        .catch((error) => console.log(error));
+      }).catch((error) => console.log(error));
     });
   };
 
@@ -62,23 +59,29 @@ const Register = () => {
         email: result.user.email,
         name: result.user.displayName,
         photoURL: result.user.photoURL,
+        role: "user",
       };
-      fetch("http://localhost:5000/users", {
+      console.log(userInfo);
+      fetch(`http://localhost:5000/users/${userInfo.email}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userInfo),
-      }).then((res) => res.json());
-      navigate("/");
-      reset();
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "Registration successful",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          navigate("/");
+          reset();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Registration successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
     });
   };
 

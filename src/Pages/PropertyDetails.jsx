@@ -3,7 +3,7 @@ import { MdLocationOn } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
 import PropertyReviews from "../Components/PropertyReviews";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
