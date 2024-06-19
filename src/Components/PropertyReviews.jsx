@@ -5,7 +5,7 @@ import useVerifiedProperties from "../Hooks/useVerifiedProperties";
 
 const PropertyReviews = ({ property }) => {
   const { reviews, propertyTitle, agentName, _id } = property;
-  const [, refetch] = useVerifiedProperties();
+  const [, refetch, isPending] = useVerifiedProperties();
 
   const { user } = useContext(AuthContext);
 

@@ -18,6 +18,7 @@ import AgentAddedProperty from "../Dashboard/AgentAddedProperty";
 import AgentSoldProperty from "../Dashboard/AgentSoldProperty";
 import AgentRequestProperty from "../Dashboard/AgentRequestProperty";
 import AgentAddProperty from "../Dashboard/AgentAddProperty";
+import AgentRoute from "./AgentRoite";
 
 export const router = createBrowserRouter([
   {
@@ -47,7 +48,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/property/:id",
-        element: <PropertyDetails></PropertyDetails>,
+        element: (
+          <PrivateRoute>
+            <PropertyDetails></PropertyDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/property/${params.id}`),
       },
@@ -65,45 +70,85 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "user-profile",
-        element: <UserProfile></UserProfile>,
+        element: (
+          <PrivateRoute>
+            <UserProfile></UserProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "user-wishlist",
-        element: <UserWishlist></UserWishlist>,
+        element: (
+          <PrivateRoute>
+            <UserWishlist></UserWishlist>
+          </PrivateRoute>
+        ),
       },
       {
         path: "user-bought",
-        element: <UserBought></UserBought>,
+        element: (
+          <PrivateRoute>
+            <UserBought></UserBought>
+          </PrivateRoute>
+        ),
       },
       {
         path: "user-reviews",
-        element: <UserReviews></UserReviews>,
+        element: (
+          <PrivateRoute>
+            <UserReviews></UserReviews>
+          </PrivateRoute>
+        ),
       },
       {
         path: "make-offer/:id",
-        element: <OfferForm></OfferForm>,
+        element: (
+          <PrivateRoute>
+            <OfferForm></OfferForm>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/property/${params.id}`),
       },
       {
         path: "agent-profile",
-        element: <AgentProfile></AgentProfile>,
+        element: (
+          <AgentRoute>
+            <AgentProfile></AgentProfile>
+          </AgentRoute>
+        ),
       },
       {
         path: "agent-addProperty",
-        element: <AgentAddProperty></AgentAddProperty>,
+        element: (
+          <AgentRoute>
+            <AgentAddProperty></AgentAddProperty>
+          </AgentRoute>
+        ),
       },
       {
         path: "agent-addedProperty",
-        element: <AgentAddedProperty></AgentAddedProperty>,
+        element: (
+          <AgentRoute>
+            <AgentAddedProperty></AgentAddedProperty>
+          </AgentRoute>
+        ),
       },
       {
         path: "agent-soldProperty",
-        element: <AgentSoldProperty></AgentSoldProperty>,
+        element: (
+          <AgentRoute>
+            <AgentSoldProperty></AgentSoldProperty>
+          </AgentRoute>
+        ),
       },
       {
         path: "agent-requestedProperty",
-        element: <AgentRequestProperty></AgentRequestProperty>,
+        element: (
+          <AgentRoute>
+            <AgentRequestProperty></AgentRequestProperty>
+          </AgentRoute>
+        ),
       },
     ],
   },

@@ -3,7 +3,11 @@ import useAxiosPublic from "./useAxiosPublic";
 
 const useVerifiedProperties = () => {
   const axiosPublic = useAxiosPublic();
-  const { refetch, data: properties = [] } = useQuery({
+  const {
+    refetch,
+    data: properties = [],
+    isPending,
+  } = useQuery({
     queryKey: ["properties"],
     queryFn: async () => {
       const res = await axiosPublic.get("/verified-properties");
@@ -11,7 +15,7 @@ const useVerifiedProperties = () => {
     },
   });
 
-  return [properties, refetch];
+  return [properties, refetch, isPending];
 };
 
 export default useVerifiedProperties;

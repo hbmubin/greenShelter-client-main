@@ -1,21 +1,23 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const UserProfile = () => {
   const { loading, user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
   const [userinfo, setUserinfo] = useState();
   const [userinfoLoading, setUserinfoLoading] = useState(true);
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/user/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setUserinfo(data);
+      axiosSecure
+        .get(`http://localhost:5000/user/${user.email}`)
+        .then((response) => {
+          setUserinfo(response.data);
           setUserinfoLoading(false);
         });
     }
-  }, [user]);
+  }, [user, axiosSecure]);
 
   if (loading || userinfoLoading) {
     return (
@@ -37,9 +39,6 @@ const UserProfile = () => {
         <div className="flex flex-col space-y-4">
           <div>
             <h2 className="text-2xl font-semibold">{userinfo.name}</h2>
-            <span className="text-sm dark:text-gray-600">
-              Role : {userinfo?.role}
-            </span>
           </div>
           <div className="space-y-1">
             <span className="flex items-center space-x-2">

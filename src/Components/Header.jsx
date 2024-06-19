@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useRole from "../Hooks/useRole";
 
 const Header = () => {
   const { user, loading, logOut } = useContext(AuthContext);
 
-  const agent = true;
-  const admin = false;
+  const [role, isRoleLoading] = useRole();
 
   const handleLogOut = () => {
     logOut()
@@ -42,7 +42,11 @@ const Header = () => {
         <NavLink
           className="hover:text-orange-400 duration-300"
           to={`/dashboard/${
-            agent ? "agent-profile" : admin ? "admin-profile" : "user-profile"
+            role == "agent"
+              ? "agent-profile"
+              : role == "admin"
+              ? "admin-profile"
+              : "user-profile"
           }`}
         >
           Dashboard

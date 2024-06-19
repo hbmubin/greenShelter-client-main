@@ -1,17 +1,17 @@
 import { FaHome } from "react-icons/fa";
 import { IoChevronBackSharp } from "react-icons/io5";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import useRole from "../Hooks/useRole";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const isAgent = false;
-  const isAdmin = false;
+  const [role, isRoleLoading] = useRole();
 
   return (
     <div className="flex">
       <div className="w-56  min-h-screen fixed bg-[#0D263C] flex flex-col justify-between">
         <ul className="menu text-[16px] p-0 ">
-          {isAgent ? (
+          {role == "agent" ? (
             <>
               <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/agent-profile">My Profile</NavLink>
@@ -37,7 +37,7 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </>
-          ) : isAdmin ? (
+          ) : role == "admin" ? (
             <>Admin</>
           ) : (
             <>
