@@ -4,12 +4,12 @@ import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const isAgent = true;
+  const isAgent = false;
   const isAdmin = false;
 
   return (
     <div className="flex">
-      <div className="w-56 min-h-screen bg-[#0D263C] flex flex-col justify-between">
+      <div className="w-56  min-h-screen fixed bg-[#0D263C] flex flex-col justify-between">
         <ul className="menu text-[16px] p-0 ">
           {isAgent ? (
             <>
@@ -79,7 +79,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className="flex-1 overflow-auto">
+      <div className="flex-1 ml-56  overflow-x-auto overflow-y-scroll">
         <Outlet />
       </div>
     </div>

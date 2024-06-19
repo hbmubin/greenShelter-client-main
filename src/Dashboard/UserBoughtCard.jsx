@@ -12,10 +12,9 @@ const UserBoughtCard = ({ property }) => {
     agentImage,
     propertyStatus,
   } = propertyDetails;
-  console.log(property);
   // console.log(boughtPropertyInfo);
   // console.log(boughtPropertyInfo.broughtStatus);
-  console.log(boughtStatus);
+  // console.log(boughtStatus);
 
   return (
     <div className="card duration-300 rounded-3xl bg-base-100 border-[1px] shadow-md">
