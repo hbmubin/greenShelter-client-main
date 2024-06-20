@@ -35,7 +35,7 @@ const PropertiesCard = ({ property }) => {
               </span>
             ))}
           </div>
-          <div className="text-green-400 text-lg mr-4">{status}</div>
+          <div className="text-green-400 text-lg mr-4">{propertyStatus}</div>
         </div>
       </figure>
       <div className="card-body">
@@ -44,7 +44,7 @@ const PropertiesCard = ({ property }) => {
           <MdLocationOn size={24} color="orange"></MdLocationOn>
           <p>{propertyLocation}</p>
         </div>
-        <div className="bg-gray-100 w-full p-2 flex gap-4 items-center  rounded-3xl">
+        <div className="bg-gray-100 w-full p-2 flex gap-4 items-center  rounded-3xl mt-4">
           <div className="w-14 rounded-full overflow-hidden">
             <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
           </div>

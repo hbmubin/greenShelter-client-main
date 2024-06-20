@@ -35,7 +35,9 @@ const AdvertisedCard = ({ property }) => {
               </span>
             ))}
           </div>
-          <div className="text-green-400 mb-2 text-lg mr-4">{status}</div>
+          <div className="text-green-400 mb-2 text-lg mr-4">
+            {propertyStatus}
+          </div>
         </div>
       </figure>
       <div className="card-body flex text-center justify-center">

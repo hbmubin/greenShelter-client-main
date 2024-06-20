@@ -53,10 +53,10 @@ const PropertyDetails = () => {
             />
           </div>
           <div className=" text-white  mt-6">
-            <div className="flex justify-between bg-[#0D263C]  px-4 py-4  rounded-t-3xl">
+            <div className="flex justify-between items-center bg-[#0D263C]  px-4 py-4  rounded-t-3xl">
               <div>
                 <h2 className="text-5xl">{propertyTitle}</h2>
-                <div className="flex gap-1 mt-2">
+                <div className="flex gap-1 mt-12">
                   <MdLocationOn size={20} color="orange"></MdLocationOn>
                   <span>{propertyLocation}</span>
                 </div>
@@ -65,8 +65,8 @@ const PropertyDetails = () => {
                   <span>Agent : {agentName}</span>
                 </div>
               </div>
-              <div className="flex gap-5 items-center">
-                <div className="text-orange-400 text-lg">
+              <div className="">
+                <div className="text-orange-400 text-lg mb-4">
                   <p>Price Range</p>
                   {priceRange.map((p, idx) => (
                     <span key={idx}>

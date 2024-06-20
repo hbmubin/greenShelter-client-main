@@ -19,6 +19,7 @@ import AgentSoldProperty from "../Dashboard/AgentSoldProperty";
 import AgentRequestProperty from "../Dashboard/AgentRequestProperty";
 import AgentAddProperty from "../Dashboard/AgentAddProperty";
 import AgentRoute from "./AgentRoite";
+import AgentUpdateProperty from "../Dashboard/AgentUpdateProperty";
 
 export const router = createBrowserRouter([
   {
@@ -149,6 +150,16 @@ export const router = createBrowserRouter([
             <AgentRequestProperty></AgentRequestProperty>
           </AgentRoute>
         ),
+      },
+      {
+        path: "update-property/:id",
+        element: (
+          <AgentRoute>
+            <AgentUpdateProperty></AgentUpdateProperty>
+          </AgentRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/property/${params.id}`),
       },
     ],
   },

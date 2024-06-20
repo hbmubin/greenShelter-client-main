@@ -1,21 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 
-const AgentAddProperty = () => {
+const AgentUpdateProperty = () => {
   const { user, loading } = useContext(AuthContext);
+  const property = useLoaderData();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
 
-  const handleAddProperty = async (event) => {
+  const [imageUrl, setImageUrl] = useState("");
+
+  const handleUpdateProperty = async (event) => {
     event.preventDefault();
     const form = event.target;
-    const photo = form.photo.files[0];
+    const photo = form?.photo?.files[0];
     const priceFrom = parseInt(form.from.value);
     const priceTo = parseInt(form.to.value);
 
@@ -32,47 +36,41 @@ const AgentAddProperty = () => {
 
     const formData = new FormData();
     formData.append("image", photo);
+    // console.log(photo);
 
-    const response = await axiosPublic.post(image_hosting_api, formData);
-    const imageUrl = response.data.data.url;
-    // console.log(response.data.success);
+    if (photo) {
+      const response = await axiosPublic.post(image_hosting_api, formData);
+      setImageUrl(response.data.data.url);
+    }
+    // console.log(imageUrl);
 
-    if (response.data.success) {
-      const propertyImage = imageUrl;
-      const propertyTitle = form.propertyTitle.value;
-      const propertyLocation = form.location.value;
-      const propertyDescriptions = form.description.value;
-      const agentName = user.displayName;
-      const agentEmail = user.email;
-      const agentImage = user.photoURL;
-      const priceRange = [priceFrom, priceTo];
-      const advertised = false;
-      const propertyStatus = "pending";
-      const property = {
-        propertyImage,
-        propertyTitle,
-        propertyLocation,
-        propertyDescriptions,
-        agentName,
-        agentEmail,
-        agentImage,
-        priceRange,
-        advertised,
-        propertyStatus,
-      };
-      // console.log(property);
-      const addRes = await axiosSecure.post("/property", property);
-      console.log(addRes.data);
-      if (addRes.data.insertedId) {
-        event.target.reset();
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Added Successful",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
+    const propertyId = property._id;
+    const updatedFields = {
+      propertyTitle: form.propertyTitle.value,
+      propertyLocation: form.location.value,
+      propertyDescriptions: form.description.value,
+      priceRange: [priceFrom, priceTo],
+    };
+    if (imageUrl) {
+      updatedFields.propertyImage = imageUrl;
+    }
+
+    const updateRes = await axiosSecure.patch(
+      `/property/${propertyId}`,
+      updatedFields
+    );
+    console.log(updateRes.data);
+
+    if (updateRes.data.modifiedCount > 0) {
+      event.target.reset();
+      setImageUrl("");
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Updated Successful",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
@@ -87,11 +85,11 @@ const AgentAddProperty = () => {
   return (
     <div className="bg-gray-200 min-h-screen">
       <div className="text-center py-14 text-3xl font-semibold">
-        <h1>Add New Property</h1>
+        <h1>Update Property</h1>
       </div>
       <div className="flex items-center justify-center">
         <form
-          onSubmit={handleAddProperty}
+          onSubmit={handleUpdateProperty}
           className="flex gap-4 flex-col p-10 bg-white rounded-3xl shadow-2xl"
         >
           <div className="">
@@ -99,7 +97,7 @@ const AgentAddProperty = () => {
               className="input w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"
               type="text"
               name="propertyTitle"
-              placeholder="Property title"
+              defaultValue={property.propertyTitle}
               required
             />
           </div>
@@ -109,7 +107,7 @@ const AgentAddProperty = () => {
                 className="input border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                 type="text"
                 name="location"
-                placeholder="Location"
+                defaultValue={property.propertyLocation}
                 required
               />
             </div>
@@ -120,7 +118,7 @@ const AgentAddProperty = () => {
                   className="input w-24 border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                   type="number"
                   name="from"
-                  placeholder="From"
+                  defaultValue={property.priceRange[0]}
                   required
                 />
               </div>
@@ -129,7 +127,7 @@ const AgentAddProperty = () => {
                   className="input w-24 border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                   type="number"
                   name="to"
-                  placeholder="To"
+                  defaultValue={property.priceRange[1]}
                   required
                 />
               </div>
@@ -157,7 +155,7 @@ const AgentAddProperty = () => {
             <textarea
               name="description"
               className="textarea w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"
-              placeholder="Property Description"
+              defaultValue={property.propertyDescriptions}
               required
             ></textarea>
           </div>
@@ -167,14 +165,13 @@ const AgentAddProperty = () => {
                 className="file-input w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                 type="file"
                 name="photo"
-                required
               />
             </div>
             <div className="w-full">
               <input
                 className="input w-full border-[1px] font-semibold rounded-3xl text-white bg-orange-400"
                 type="submit"
-                value="Add Property"
+                value="Update Property"
               />
             </div>
           </div>
@@ -184,4 +181,4 @@ const AgentAddProperty = () => {
   );
 };
 
-export default AgentAddProperty;
+export default AgentUpdateProperty;
