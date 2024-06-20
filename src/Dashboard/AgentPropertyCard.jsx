@@ -75,7 +75,19 @@ const AgentPropertyCard = ({ property }) => {
               </span>
             ))}
           </div>
-          <div className="text-green-400 text-lg mr-4">{propertyStatus}</div>
+          <div
+            className={`${
+              propertyStatus == "verified"
+                ? "text-green-400"
+                : propertyStatus == "pending"
+                ? "text-yellow-300"
+                : propertyStatus == "sold"
+                ? "text-orange-300"
+                : propertyStatus == "rejected" && "text-orange-600"
+            } text-lg mr-4`}
+          >
+            {propertyStatus}
+          </div>
         </div>
       </figure>
       <div className="card-body">
