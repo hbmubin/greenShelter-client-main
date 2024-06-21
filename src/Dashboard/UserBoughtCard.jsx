@@ -1,5 +1,4 @@
 import { MdLocationOn } from "react-icons/md";
-import { Link } from "react-router-dom";
 
 const UserBoughtCard = ({ property }) => {
   const { propertyDetails } = property;
@@ -39,12 +38,18 @@ const UserBoughtCard = ({ property }) => {
         <div className="flex w-full justify-between items-center">
           <div>
             <div>Offered amount</div>
-            <div className="btn rounded-3xl bg-gray-300">{offeredAmount}</div>
+            <div className="btn rounded-3xl bg-gray-300">${offeredAmount}</div>
           </div>
 
           <div>
             <div className="">Status</div>
-            <div className="btn rounded-3xl bg-gray-300">{boughtStatus}</div>
+            <div
+              className={`btn rounded-3xl ${
+                boughtStatus == "accepted" ? "bg-green-400 text-white" : ""
+              } bg-gray-300`}
+            >
+              {boughtStatus}
+            </div>
           </div>
         </div>
         {boughtStatus == "accepted" && (

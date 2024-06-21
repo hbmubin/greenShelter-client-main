@@ -2,10 +2,20 @@ import { FaHome } from "react-icons/fa";
 import { IoChevronBackSharp } from "react-icons/io5";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import useRole from "../Hooks/useRole";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const { loading } = useContext(AuthContext);
   const [role, isRoleLoading] = useRole();
+  if (isRoleLoading || loading) {
+    return (
+      <div className="flex w-full py-28 items-center justify-center">
+        <span className="loading loading-ring w-28"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="flex">

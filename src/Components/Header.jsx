@@ -41,12 +41,12 @@ const Header = () => {
       <li>
         <NavLink
           className="hover:text-orange-400 duration-300"
-          to={`/dashboard/${
+          to={`${
             role == "agent"
-              ? "agent-profile"
+              ? "/dashboard/agent-profile"
               : role == "admin"
-              ? "admin-profile"
-              : "user-profile"
+              ? "/dashboard/admin-profile"
+              : "/dashboard/user-profile"
           }`}
         >
           Dashboard

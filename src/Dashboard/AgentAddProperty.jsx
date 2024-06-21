@@ -172,7 +172,7 @@ const AgentAddProperty = () => {
             </div>
             <div className="w-full">
               <input
-                className="input w-full border-[1px] font-semibold rounded-3xl text-white bg-orange-400"
+                className="btn input w-full border-[1px] font-semibold rounded-3xl text-white bg-orange-400"
                 type="submit"
                 value="Add Property"
               />

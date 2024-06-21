@@ -20,11 +20,23 @@ const OfferForm = () => {
     agentImage,
     priceRange,
     propertyDescriptions,
+    _id,
   } = property;
 
   const [offeredAmount, setOfferedAmount] = useState("");
   const date = new Date();
   const offerDate = date.toISOString().split("T")[0];
+
+  const generateOfferId = () => {
+    const userEmail = _id.slice(5, 12);
+    const now = new Date();
+    const timeString =
+      now.toLocaleTimeString("en-GB", { hour12: false }).replace(/:/g, "") +
+      now.getMilliseconds();
+    const numTime = timeString.slice(2, 10);
+    const offerId = `${userEmail}${numTime}`;
+    return offerId;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -41,10 +53,12 @@ const OfferForm = () => {
     }
 
     const offerData = {
+      offerId: generateOfferId(),
       propertyId: property._id,
       offeredAmount,
       buyerEmail: user.email,
       offerDate,
+      boughtStatus: "pending",
     };
     console.log(offerData);
 
@@ -191,7 +205,7 @@ const OfferForm = () => {
           </div>
           <div>
             <button
-              className="btn rounded-3xl mt-6  bg-orange-400"
+              className="btn rounded-3xl mt-6 text-white  bg-orange-400"
               type="submit"
             >
               Submit Offer

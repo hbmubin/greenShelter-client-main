@@ -3,8 +3,9 @@ import useVerifiedProperties from "../Hooks/useVerifiedProperties";
 
 const AllProperties = () => {
   const [properties, refetch, isPending] = useVerifiedProperties();
-  {
-    isPending && (
+
+  if (isPending) {
+    return (
       <div className="flex w-full py-28 items-center justify-center">
         <span className="loading loading-ring w-28"></span>
       </div>
