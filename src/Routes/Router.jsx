@@ -20,6 +20,7 @@ import AgentRequestProperty from "../Dashboard/AgentRequestProperty";
 import AgentAddProperty from "../Dashboard/AgentAddProperty";
 import AgentRoute from "./AgentRoite";
 import AgentUpdateProperty from "../Dashboard/AgentUpdateProperty";
+import Payment from "../Dashboard/Payment/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -160,6 +161,12 @@ export const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/property/${params.id}`),
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+        // loader: ({ params }) =>
+        //   fetch(`http://localhost:5000/property/${params.id}`),
       },
     ],
   },

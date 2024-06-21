@@ -8,7 +8,7 @@ const AgentRoute = ({ children }) => {
   const [role, isRoleLoading] = useRole();
   const location = useLocation();
 
-  if (loading || isRoleLoading) {
+  if (loading) {
     return (
       <div className=" min-h-screen flex justify-center items-start">
         <span className="loading mt-24 px-16 loading-ring loading-lg"></span>

@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import PropertiesCard from "../Components/PropertiesCard";
 import useVerifiedProperties from "../Hooks/useVerifiedProperties";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const AllProperties = () => {
   const [properties, refetch, isPending] = useVerifiedProperties();
+  const { loading } = useContext(AuthContext);
 
   if (isPending) {
     return (
