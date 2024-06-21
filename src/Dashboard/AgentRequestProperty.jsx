@@ -33,7 +33,19 @@ const AgentRequestProperty = () => {
       })
     );
   };
-  const handleReject = () => {};
+  const handleReject = (offerId) => {
+    // console.log(offerId);
+    axiosSecure.post(`/agent/reject/${offerId}`).then(
+      (res) => offeredRefetch(),
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Successfully Rejected",
+        showConfirmButton: false,
+        timer: 1500,
+      })
+    );
+  };
 
   return (
     <div className="min-h-screen">
@@ -75,7 +87,7 @@ const AgentRequestProperty = () => {
                         accept
                       </button>
                       <button
-                        onClick={handleReject}
+                        onClick={() => handleReject(property.info.offerId)}
                         className="btn rounded-3xl text-white bg-orange-500"
                       >
                         reject
