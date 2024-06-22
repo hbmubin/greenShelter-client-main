@@ -63,6 +63,11 @@ const Dashboard = () => {
               <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/admin-reviews">Manage reviews</NavLink>
               </li>
+              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+                <NavLink to="/dashboard/admin-advertise">
+                  Advertise Property
+                </NavLink>
+              </li>
             </>
           ) : (
             <>

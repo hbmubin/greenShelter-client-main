@@ -1,10 +1,13 @@
 import { useContext } from "react";
 import useAgSold from "../Hooks/useAgSold";
 import { AuthContext } from "../Providers/AuthProvider";
+import useAgentPropertiesStats from "../Hooks/useAgentPropertiesStats";
 
 const AgentSoldProperty = () => {
   const [soldProperties, refetch, isPending] = useAgSold();
-  const { loading } = useContext(AuthContext);
+  const { isLoading, stats, error } = useAgentPropertiesStats();
+  useAgentPropertiesStats();
+  const { user, loading } = useContext(AuthContext);
   if (loading || isPending) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">
@@ -12,10 +15,16 @@ const AgentSoldProperty = () => {
       </div>
     );
   }
+
+  console.log(stats);
   return (
     <div className="min-h-screen">
-      <div className="text-center py-14 text-3xl font-semibold">
-        <h1>My Sold Property {`(${soldProperties.length})`}</h1>
+      <div className="text-center py-12 text-3xl font-semibold">
+        <h1>My Sold Property</h1>
+      </div>
+      <div className="w-80 mx-auto flex justify-between pb-4 text-md font-semibold">
+        <div>Total Income : ${stats.totalAmount}</div>
+        <div>Property Sold : {stats.totalCount}</div>
       </div>
       <div className="overflow-x-auto w-11/12 mx-auto border-[1px] rounded-lg">
         <table className="table table-zebra">

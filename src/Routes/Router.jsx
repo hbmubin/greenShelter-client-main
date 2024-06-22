@@ -26,6 +26,7 @@ import AdminProperties from "../Dashboard/AdminProperties";
 import AdminUsers from "../Dashboard/AdminUsers";
 import AdminReviews from "../Dashboard/AdminReviews";
 import AdminRoute from "./AdminRoute";
+import AdminAdvertise from "../Dashboard/AdminAdvertise";
 
 export const router = createBrowserRouter([
   {
@@ -204,6 +205,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AdminReviews></AdminReviews>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "admin-advertise",
+        element: (
+          <AdminRoute>
+            <AdminAdvertise></AdminAdvertise>
           </AdminRoute>
         ),
       },
