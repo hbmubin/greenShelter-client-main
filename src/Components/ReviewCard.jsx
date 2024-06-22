@@ -5,7 +5,7 @@ const ReviewCard = ({ review }) => {
         <div className="flex space-x-4">
           <div>
             <img
-              src="https://source.unsplash.com/100x100/?portrait"
+              src={review.reviewerImage}
               alt=""
               className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
             />
