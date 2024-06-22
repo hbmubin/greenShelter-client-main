@@ -53,10 +53,7 @@ const WishlistCard = ({ property }) => {
   return (
     <div className="card duration-300 rounded-3xl bg-base-100 border-[1px] shadow-md">
       <figure className="mx-4 mt-4 relative overflow-hidden">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          className=" rounded-3xl "
-        />
+        <img src={propertyImage} className=" rounded-3xl w-full" />
         <div
           style={liner}
           className=" absolute h-full w-full flex justify-between items-end  rounded-3xl"
@@ -84,7 +81,7 @@ const WishlistCard = ({ property }) => {
         </div>
         <div className="bg-gray-100 w-full p-2 flex gap-4 items-center  rounded-3xl">
           <div className="w-14 rounded-full overflow-hidden">
-            <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            <img src={agentImage} />
           </div>
           <div>
             <div className="font-medium text-neutral-600">Agent:</div>

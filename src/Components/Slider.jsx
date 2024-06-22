@@ -9,13 +9,12 @@ const Slider = () => {
         <div className="absolute bg-black h-full w-full bg-opacity-50"></div>
         <div className="absolute text-center top-1/2 left-1/2 -translate-x-1/2 text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <h1 className="mb-5 text-5xl font-bold">Eco-Friendly Living</h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Discover the perfect blend of modern comfort and sustainability in
+              a serene environment. Experience a lifestyle that prioritizes both
+              your well-being and the planet's health.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -38,13 +37,12 @@ const Slider = () => {
         <div className="absolute bg-black h-full w-full bg-opacity-50"></div>
         <div className="absolute text-center top-1/2 left-1/2 -translate-x-1/2 text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <h1 className="mb-5 text-5xl font-bold">Nature-Inspired Living</h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Immerse yourself in a home that combines sustainable living with
+              contemporary comfort. Experience a sanctuary designed to nurture
+              both you and the environment.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -70,13 +68,12 @@ const Slider = () => {
         <div className="absolute bg-black h-full w-full bg-opacity-50"></div>
         <div className="absolute text-center top-1/2 left-1/2 -translate-x-1/2 text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+            <h1 className="mb-5 text-5xl font-bold">Sustainable Serenity</h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+              Enjoy the harmony of eco-friendly design and modern luxury in a
+              peaceful setting. Embrace a lifestyle that cares for you and the
+              environment.
             </p>
-            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

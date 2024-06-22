@@ -19,13 +19,10 @@ const AdvertisedCard = ({ property }) => {
   return (
     <div className="card  hover:scale-105 duration-300 rounded-3xl bg-base-100 border-[1px] shadow-md">
       <figure className="mx-4 mt-4 relative overflow-hidden">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          className=" rounded-3xl "
-        />
+        <img src={propertyImage} className=" w-full rounded-3xl" />
         <div
           style={liner}
-          className=" absolute h-full w-full flex justify-between items-end  rounded-3xl"
+          className=" absolute h-full  w-full flex justify-between items-end  rounded-3xl overflow-hidden"
         >
           <div className="ml-2 mb-2 text-white">
             {priceRange.map((p, idx) => (

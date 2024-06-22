@@ -39,8 +39,8 @@ const AllProperties = () => {
   }
 
   return (
-    <div className="px-6 py-[15vh]">
-      <div className="flex justify-center my-8">
+    <div className="px-6 py-[15vh] bg-gray-100">
+      <div className="flex justify-center mb-3">
         <input
           type="text"
           placeholder="Search by location..."
@@ -49,7 +49,7 @@ const AllProperties = () => {
           className="px-4 py-2 border border-gray-300 rounded-3xl w-full max-w-sm"
         />
       </div>
-      <div className="grid lg:grid-cols-4  gap-4 md:grid-cols-3 bg-gray-100">
+      <div className="grid lg:grid-cols-4  gap-4 md:grid-cols-3 ">
         {filteredProperties.length > 0 ? (
           filteredProperties.map((property) => (
             <PropertiesCard property={property} key={property._id} />

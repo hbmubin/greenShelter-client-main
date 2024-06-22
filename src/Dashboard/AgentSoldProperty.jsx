@@ -8,7 +8,7 @@ const AgentSoldProperty = () => {
   const { isLoading, stats, error } = useAgentPropertiesStats();
   useAgentPropertiesStats();
   const { user, loading } = useContext(AuthContext);
-  if (loading || isPending) {
+  if (loading || isPending || isLoading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">
         <span className="loading loading-ring loading-lg"></span>
@@ -23,8 +23,8 @@ const AgentSoldProperty = () => {
         <h1>My Sold Property</h1>
       </div>
       <div className="w-80 mx-auto flex justify-between pb-4 text-md font-semibold">
-        <div>Total Income : ${stats.totalAmount}</div>
-        <div>Property Sold : {stats.totalCount}</div>
+        <div>Total Income : ${stats?.totalAmount}</div>
+        <div>Property Sold : {stats?.totalCount}</div>
       </div>
       <div className="overflow-x-auto w-11/12 mx-auto border-[1px] rounded-lg">
         <table className="table table-zebra">
@@ -38,7 +38,7 @@ const AgentSoldProperty = () => {
             </tr>
           </thead>
           <tbody>
-            {soldProperties.map((property) => (
+            {soldProperties?.map((property) => (
               <tr key={property._id}>
                 <td>{property.propertyTitle}</td>
                 <td>{property.propertyLocation}</td>
