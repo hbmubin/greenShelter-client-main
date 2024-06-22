@@ -18,30 +18,30 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="flex">
-      <div className="w-56  min-h-screen fixed bg-[#0D263C] flex flex-col justify-between">
-        <ul className="menu text-[16px] p-0 ">
+    <div className="md:flex">
+      <div className="md:w-56   md:min-h-screen md:fixed bg-[#0D263C] flex flex-col justify-between">
+        <ul className="menu text-[16px] p-0 grid grid-cols-2 md:block">
           {role == "agent" ? (
             <>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/agent-profile">My Profile</NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/agent-addProperty">
                   Add Property
                 </NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/agent-addedProperty">
                   My Added Property
                 </NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/agent-soldProperty">
                   My Sold Property
                 </NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/agent-requestedProperty">
                   Requested Property
                 </NavLink>
@@ -49,21 +49,21 @@ const Dashboard = () => {
             </>
           ) : role == "admin" ? (
             <>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/admin-profile">My Profile</NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/admin-properties">
                   Manage Properties
                 </NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/admin-users">Manage Users</NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/admin-reviews">Manage reviews</NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/admin-advertise">
                   Advertise Property
                 </NavLink>
@@ -71,22 +71,22 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px]  border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/user-profile">My Profile</NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/user-wishlist">My Wishlist</NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/user-bought">Property Bought</NavLink>
               </li>
-              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+              <li className="md:border-x-0  border-x-[1px] border-x-gray-600 flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
                 <NavLink to="/dashboard/user-reviews">My Reviews</NavLink>
               </li>
             </>
           )}
         </ul>
-        <ul className="menu text-[16px] p-0 ">
+        <ul className="menu max-h-screen text-[16px] p-0 ">
           <li className="flex justify-center items-center rounded-none font-semibold text-[#0D263C] bg-orange-400">
             <div>
               <span>
@@ -109,7 +109,7 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
-      <div className="flex-1 ml-56  overflow-x-auto overflow-y-scroll">
+      <div className="flex-1 md:ml-56  overflow-x-auto overflow-y-scroll">
         <Outlet />
       </div>
     </div>

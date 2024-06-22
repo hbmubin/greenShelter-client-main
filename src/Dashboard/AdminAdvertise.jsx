@@ -16,12 +16,12 @@ const AdminAdvertise = () => {
       </div>
     );
   }
-  console.log(properties);
+  //   console.log(properties);
 
   const handleAdvertise = (id) => {
     axiosSecure.patch(`/admin/advertise-property/${id}`).then((res) => {
       if (res.data.modifiedCount > 0) {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",

@@ -1,5 +1,5 @@
 import { MdLocationOn } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -25,7 +25,7 @@ const WishlistCard = ({ property }) => {
     axiosPublic
       .delete(`/remove-wishlist/${user.email}/${property._id}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",
@@ -69,11 +69,11 @@ const WishlistCard = ({ property }) => {
           <div className="text-green-400 mb-2 text-lg mr-4">{status}</div>
         </div>
       </figure>
-      <div className="card-body flex text-center justify-center">
-        <h2 className="card-title flex text-center justify-center">
+      <div className="card-body flex lg:text-center lg:justify-center">
+        <h2 className="card-title flex lg:text-center lg:justify-center">
           {propertyTitle}
         </h2>
-        <div className="flex items-center text-center justify-center">
+        <div className="flex items-center text-center lg:justify-center">
           <div className="flex items-center  gap-2">
             <MdLocationOn size={24} color="orange"></MdLocationOn>
             <p>{propertyLocation}</p>

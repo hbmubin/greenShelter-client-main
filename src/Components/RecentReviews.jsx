@@ -5,7 +5,7 @@ const RecentReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loadReviews, setLoadReviews] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:5000/recent-reviews")
+    fetch("https://green-shelter-server-a-12.vercel.app/recent-reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

@@ -15,7 +15,7 @@ const AdminReviewCard = ({ review }) => {
   } = review;
   const handleDelete = (reviewId) => {
     axiosSecure.delete(`/admin/delete-review/${reviewId}`).then((res) => {
-      console.log(res);
+      //   console.log(res);
       refetch();
       Swal.fire({
         position: "top-end",
@@ -29,8 +29,8 @@ const AdminReviewCard = ({ review }) => {
 
   return (
     <div className="card  hover:scale-[1.01] duration-300 rounded-3xl bg-base-100 border-[1px] shadow-sm p-4">
-      <div className="flex justify-between items-center border-b-2 pb-4">
-        <div className="flex gap-3 items-center ">
+      <div className="lg:flex justify-between items-center border-b-2 pb-4">
+        <div className="flex mb-6 lg:mb-0 gap-3 items-center ">
           <div className=" w-14">
             <img
               className="overflow-hidden  rounded-full max-w-full "

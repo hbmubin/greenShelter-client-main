@@ -21,7 +21,7 @@ const AdminProperties = () => {
   const handleVerify = (id) => {
     axiosSecure.patch(`/admin/verify-property/${id}`).then((res) => {
       if (res.data.modifiedCount > 0) {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",
@@ -36,7 +36,7 @@ const AdminProperties = () => {
   const handleReject = (id) => {
     axiosSecure.patch(`/admin/reject-property/${id}`).then((res) => {
       if (res.data.modifiedCount > 0) {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",

@@ -15,7 +15,7 @@ const AgentRequestProperty = () => {
   const modifiedProperties = properties.filter(
     (property) => property.info.boughtStatus !== "bought"
   );
-  console.log(modifiedProperties);
+  // console.log(modifiedProperties);
   if (loading || propertiesLoading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">

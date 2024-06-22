@@ -39,7 +39,7 @@ const CheckoutForm = ({ propertyData }) => {
     });
 
     if (error) {
-      console.log("error", error);
+      // console.log("error", error);
       setPaymentError(error.message);
     } else {
       const buyerInfo = {
@@ -50,14 +50,14 @@ const CheckoutForm = ({ propertyData }) => {
         agentEmail: propertyData.propertyDetails.agentEmail,
         offerId: propertyData.offerId,
       };
-      console.log(buyerInfo);
+      // console.log(buyerInfo);
       axiosSecure
         .post(
           `/agent/payment-confirm/${paymentMethod.id}/${propertyData.propertyId}`,
           buyerInfo
         )
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           setPaymentError("");
           setPaymentStatus(true);
           Swal.fire({
@@ -70,7 +70,7 @@ const CheckoutForm = ({ propertyData }) => {
           navigate("/dashboard/user-bought");
         })
         .catch((error) => {
-          console.log("Payment confirmation error", error);
+          // console.log("Payment confirmation error", error);
           setPaymentError("Payment confirmation failed");
         });
     }

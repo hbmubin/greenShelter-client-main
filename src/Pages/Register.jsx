@@ -26,13 +26,16 @@ const Register = () => {
         role: "user",
       };
       console.log(userInfo);
-      fetch(`http://localhost:5000/users/${userInfo.email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userInfo),
-      })
+      fetch(
+        `https://green-shelter-server-a-12.vercel.app/users/${userInfo.email}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           navigate("/");
@@ -49,7 +52,9 @@ const Register = () => {
       updateProfile(result.user, {
         displayName: data.name,
         photoURL: data.photo,
-      }).catch((error) => console.log(error));
+      }).catch((error) => {
+        // console.log(error);
+      });
     });
   };
 
@@ -61,17 +66,20 @@ const Register = () => {
         photoURL: result.user.photoURL,
         role: "user",
       };
-      console.log(userInfo);
-      fetch(`http://localhost:5000/users/${userInfo.email}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(userInfo),
-      })
+      // console.log(userInfo);
+      fetch(
+        `https://green-shelter-server-a-12.vercel.app/users/${userInfo.email}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           navigate("/");
           reset();
           Swal.fire({
@@ -87,7 +95,7 @@ const Register = () => {
 
   return (
     <div className="py-[15vh] bg-gray-100 w-full">
-      <div className="card-body w-[700px] mx-auto mt-10 bg-base-100 rounded-3xl ">
+      <div className="card-body lg:w-[700px] mx-auto mt-10 bg-base-100 rounded-3xl ">
         <div className="text-center text-4xl font-semibold py-4">
           Register Now
         </div>

@@ -52,6 +52,14 @@ const Header = () => {
           Dashboard
         </NavLink>
       </li>
+      <li>
+        <button
+          onClick={handleLogOut}
+          className="py-3 px-5 block md:hidden  rounded-3xl bg-orange-400 hover:bg-orange-300 duration-300"
+        >
+          Logout
+        </button>
+      </li>
     </>
   );
 
@@ -75,7 +83,7 @@ const Header = () => {
               </div>
               <button
                 onClick={handleLogOut}
-                className="py-3 px-5  rounded-3xl bg-orange-400 hover:bg-orange-300 duration-300"
+                className="py-3 px-5 md:block hidden  rounded-3xl bg-orange-400 hover:bg-orange-300 duration-300"
               >
                 Logout
               </button>
@@ -102,7 +110,7 @@ const Header = () => {
   );
 
   return (
-    <header className="navbar px-6 bg-opacity-80 fixed z-50 py-3 text-white bg-[#0D263C]">
+    <header className="navbar px-6  z-50 py-3 text-white bg-[#0D263C]">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

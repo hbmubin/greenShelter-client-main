@@ -11,7 +11,7 @@ const UserProfile = () => {
   useEffect(() => {
     if (user) {
       axiosSecure
-        .get(`http://localhost:5000/user/${user.email}`)
+        .get(`https://green-shelter-server-a-12.vercel.app/user/${user.email}`)
         .then((response) => {
           setUserinfo(response.data);
           setUserinfoLoading(false);

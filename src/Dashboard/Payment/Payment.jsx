@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import CheckoutForm from "./ChekoutForm";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PK);
-console.log(stripePromise);
+// console.log(stripePromise);
 
 const Payment = () => {
   const location = useLocation();
@@ -19,10 +19,10 @@ const Payment = () => {
     ? JSON.parse(decodeURIComponent(queryParams.property))
     : {};
 
-  console.log(propertyData);
+  // console.log(propertyData);
 
   return (
-    <div className="min-h-screen bg-gray-200 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-200  flex items-center justify-center">
       <div className="bg-white p-6 rounded-xl w-[500px]">
         <div className="text-center text-2xl text-neutral-700 font-semibold mb-10">
           <h2>Check Out : ${propertyData.offeredAmount}</h2>

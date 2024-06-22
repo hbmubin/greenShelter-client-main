@@ -59,7 +59,7 @@ const AgentUpdateProperty = () => {
       `/property/${propertyId}`,
       updatedFields
     );
-    console.log(updateRes.data);
+    // console.log(updateRes.data);
 
     if (updateRes.data.modifiedCount > 0) {
       event.target.reset();

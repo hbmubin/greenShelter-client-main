@@ -14,7 +14,7 @@ const UserReviewCard = ({ review }) => {
         `/delete-userReview/${review.propertyId}/${user.email}/${review.reviewId}`
       )
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",
@@ -35,7 +35,7 @@ const UserReviewCard = ({ review }) => {
       });
   };
 
-  console.log(review);
+  // console.log(review);
   return (
     <div className="bg-gray-100 mb- p-10 mb-6">
       <p className="text-neutral-600 p-2 bg-gray-200  mb-2">

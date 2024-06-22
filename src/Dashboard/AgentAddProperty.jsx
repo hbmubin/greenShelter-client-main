@@ -62,7 +62,7 @@ const AgentAddProperty = () => {
       };
       // console.log(property);
       const addRes = await axiosSecure.post("/property", property);
-      console.log(addRes.data);
+      // console.log(addRes.data);
       if (addRes.data.insertedId) {
         event.target.reset();
         Swal.fire({
@@ -103,10 +103,10 @@ const AgentAddProperty = () => {
               required
             />
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 md:flex-row flex-col">
             <div className="">
               <input
-                className="input border-[1px] border-gray-300 rounded-3xl bg-gray-200"
+                className="input w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                 type="text"
                 name="location"
                 placeholder="Location"
@@ -135,7 +135,7 @@ const AgentAddProperty = () => {
               </div>
             </div>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4 md:flex-row flex-col">
             <div className="w-full">
               <input
                 className="input w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"
@@ -161,7 +161,7 @@ const AgentAddProperty = () => {
               required
             ></textarea>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-4  md:flex-row flex-col">
             <div className="w-full">
               <input
                 className="file-input w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"

@@ -47,14 +47,11 @@ const PropertyDetails = () => {
       <div className="px-6">
         <div className="w-11/12 mx-auto">
           <div className=" rounded-3xl overflow-hidden">
-            <img
-              className="w-full"
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-            />
+            <img className="w-full" src={propertyImage} />
           </div>
           <div className=" text-white  mt-6">
-            <div className="flex justify-between items-center bg-[#0D263C]  px-4 py-4  rounded-t-3xl">
-              <div>
+            <div className="lg:flex justify-between items-center bg-[#0D263C]  px-4 py-4   rounded-t-3xl">
+              <div className="mb-8 lg:mb-0">
                 <h2 className="text-5xl">{propertyTitle}</h2>
                 <div className="flex gap-1 mt-12">
                   <MdLocationOn size={20} color="orange"></MdLocationOn>

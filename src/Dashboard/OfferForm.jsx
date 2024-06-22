@@ -61,7 +61,7 @@ const OfferForm = () => {
       offerDate,
       boughtStatus: "pending",
     };
-    console.log(offerData);
+    // console.log(offerData);
 
     const response = await axiosPublic.post("/submit-offer", offerData);
     if (response.data.modifiedCount > 0) {
@@ -76,11 +76,11 @@ const OfferForm = () => {
       axiosPublic
         .delete(`/remove-wishlist/${user.email}/${property._id}`)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           refetch();
         });
     } else {
-      console.log(response.data);
+      // console.log(response.data);
       Swal.fire({
         position: "top-end",
         icon: "error",
@@ -100,17 +100,17 @@ const OfferForm = () => {
   }
 
   return (
-    <div>
+    <div className="pb-4">
       <h2 className="text-3xl  font-semibold text-center mt-6 mb-10">
         Make an Offer
       </h2>
 
       <div className="offer-form w-full flex items-center justify-center">
         <form
-          className="p-6 bg-gray-100 rounded-3xl border-2"
+          className="md:p-6 p-10 bg-gray-100 rounded-3xl border-2"
           onSubmit={handleSubmit}
         >
-          <div className=" flex gap-4">
+          <div className=" flex gap-4 md:flex-row flex-col">
             <div>
               <div className="form-control">
                 <label className="label">

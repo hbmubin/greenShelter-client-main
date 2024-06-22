@@ -62,7 +62,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/property/${params.id}`),
+          fetch(
+            `https://green-shelter-server-a-12.vercel.app/property/${params.id}`
+          ),
       },
     ],
   },
@@ -116,7 +118,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/property/${params.id}`),
+          fetch(
+            `https://green-shelter-server-a-12.vercel.app/property/${params.id}`
+          ),
       },
       {
         path: "agent-profile",
@@ -166,7 +170,9 @@ export const router = createBrowserRouter([
           </AgentRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/property/${params.id}`),
+          fetch(
+            `https://green-shelter-server-a-12.vercel.app/property/${params.id}`
+          ),
       },
       {
         path: "payment",

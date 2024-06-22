@@ -39,8 +39,8 @@ const AllProperties = () => {
   }
 
   return (
-    <div className="px-6 py-[15vh] bg-gray-100">
-      <div className="flex justify-center mb-3">
+    <div className="px-6 py-[5vh] bg-gray-100">
+      <div className="flex justify-center mb-8 lg:mb-4">
         <input
           type="text"
           placeholder="Search by location..."

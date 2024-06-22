@@ -11,7 +11,7 @@ const UserBought = () => {
       const fetchedProperties = await Promise.all(
         propertiesBought.map(async (property) => {
           const res = await fetch(
-            `http://localhost:5000/property/${property.propertyId}`
+            `https://green-shelter-server-a-12.vercel.app/property/${property.propertyId}`
           );
           const data = await res.json();
           return { ...property, propertyDetails: data };
@@ -24,7 +24,7 @@ const UserBought = () => {
       fetchPropertyDetails();
     }
   }, [propertiesBought]);
-  console.log(propertiesBought);
+  // console.log(propertiesBought);
   if (propertiesLoading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">

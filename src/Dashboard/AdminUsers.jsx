@@ -21,7 +21,7 @@ const AdminUsers = () => {
     axiosSecure
       .patch(`/admin/make-agent/${userId}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",
@@ -46,7 +46,7 @@ const AdminUsers = () => {
     axiosSecure
       .patch(`/admin/make-admin/${userId}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",
@@ -71,7 +71,7 @@ const AdminUsers = () => {
     axiosSecure
       .patch(`/admin/make-fraud/${userEmail}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",
@@ -97,7 +97,7 @@ const AdminUsers = () => {
     axiosSecure
       .delete(`/admin/delete-user/${userEmail}`)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         refetch();
         Swal.fire({
           position: "top-end",

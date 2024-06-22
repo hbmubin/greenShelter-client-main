@@ -15,7 +15,7 @@ const UserWishlist = () => {
       const fetchProperties = async () => {
         const propertyPromises = wishlist.map((id) =>
           axiosSecure
-            .get(`http://localhost:5000/property/${id}`)
+            .get(`https://green-shelter-server-a-12.vercel.app/property/${id}`)
             .then((response) => response.data)
         );
 
@@ -28,7 +28,7 @@ const UserWishlist = () => {
   }, [wishlist, axiosSecure]);
 
   const validProperties = properties.filter((property) => property != "");
-  console.log(validProperties);
+  // console.log(validProperties);
   if (loading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">

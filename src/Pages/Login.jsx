@@ -13,7 +13,7 @@ const Login = () => {
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     loginUser(email, password)
       .then(() => {
         Swal.fire({
@@ -53,7 +53,9 @@ const Login = () => {
         body: JSON.stringify(userInfo),
       })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => {
+          // console.log(data);
+        });
 
       Swal.fire({
         position: "top-end",
@@ -68,7 +70,7 @@ const Login = () => {
 
   return (
     <div className="py-[15vh] bg-gray-100 w-full">
-      <div className="card-body w-[700px] mx-auto mt-10 bg-base-100 rounded-3xl ">
+      <div className="card-body lg:w-[700px] mx-auto mt-10 bg-base-100 rounded-3xl ">
         <div className="text-center text-4xl font-semibold py-4">Login Now</div>
         <form onSubmit={handleLogin}>
           <div className="form-control">

@@ -8,7 +8,7 @@ const UserReviews = () => {
   const { user, loading } = useContext(AuthContext);
   const [reviews] = useUserReviews();
 
-  console.log(reviews);
+  // console.log(reviews);
   if (loading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">
