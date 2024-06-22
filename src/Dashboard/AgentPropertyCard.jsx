@@ -1,7 +1,7 @@
 import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 import useAgentProperties from "../Hooks/useAgentProperties";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
@@ -55,7 +55,12 @@ const AgentPropertyCard = ({ property }) => {
       "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(138,138,138,0) 46%, rgba(0,0,0,1) 100%)",
   };
 
-  const isDisable = propertyStatus == "rejected";
+  //   useEffect(() => {
+  //     if (propertyStatus == "sold" || propertyStatus == "rejected") {
+  //       setIsDisable(true);
+  //     }
+  //   }, [propertyStatus, isDisable]);
+
   return (
     <div className="card  hover:scale-[1.01] duration-300 rounded-3xl bg-base-100 border-[1px] shadow-md">
       <figure className="mx-4 mt-4 relative overflow-hidden">
@@ -106,23 +111,22 @@ const AgentPropertyCard = ({ property }) => {
           </div>
         </div>
         <div className="card-actions flex items-center justify-between mt-2 px-4">
-          <div>
+          {propertyStatus !== "sold" && propertyStatus !== "rejected" && (
             <Link
               className="btn rounded-full bg-emerald-400 text-white"
               to={`/dashboard/update-property/${property._id}`}
-              disabled={isDisable}
             >
               Update
             </Link>
-          </div>
-          <div>
+          )}
+          {propertyStatus !== "sold" && (
             <button
               onClick={handleDelete}
               className="btn rounded-full bg-orange-600 text-white"
             >
               Delete
             </button>
-          </div>
+          )}
         </div>
       </div>
     </div>

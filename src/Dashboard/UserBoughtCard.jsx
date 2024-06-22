@@ -14,7 +14,7 @@ const UserBoughtCard = ({ property }) => {
   } = propertyDetails;
   // console.log(boughtPropertyInfo);
   // console.log(boughtPropertyInfo.broughtStatus);
-  // console.log(propertyId);
+  // console.log(property);
 
   return (
     <div className="card duration-300 rounded-3xl bg-base-100 border-[1px] shadow-md">

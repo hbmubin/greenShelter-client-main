@@ -13,7 +13,6 @@ const useUserWishlist = () => {
       return res.data;
     },
   });
-
   return [wishlist, refetch];
 };
 

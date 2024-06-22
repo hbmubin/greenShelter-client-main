@@ -26,6 +26,9 @@ const UserWishlist = () => {
       fetchProperties();
     }
   }, [wishlist, axiosSecure]);
+
+  const validProperties = properties.filter((property) => property != "");
+  console.log(validProperties);
   if (loading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">
@@ -36,10 +39,10 @@ const UserWishlist = () => {
   return (
     <div className="py-4">
       <h2 className="py-6 text-xl font-semibold ml-6">
-        My Wishlist ({properties.length})
+        My Wishlist ({validProperties.length})
       </h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 px-6">
-        {properties.map((property) => (
+        {validProperties.map((property) => (
           <WishlistCard key={property._id} property={property}></WishlistCard>
         ))}
       </div>

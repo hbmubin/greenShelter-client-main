@@ -28,10 +28,7 @@ const AgentSoldCard = ({ property }) => {
   return (
     <div className="card  hover:scale-[1.01] duration-300 rounded-3xl bg-base-100 border-[1px] shadow-md">
       <figure className="mx-4 mt-4 relative overflow-hidden">
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          className=" rounded-3xl "
-        />
+        <img src={propertyImage} className=" rounded-3xl " />
         <div
           style={liner}
           className="absolute h-full w-full flex items-end justify-between rounded-3xl"

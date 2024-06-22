@@ -21,6 +21,11 @@ import AgentAddProperty from "../Dashboard/AgentAddProperty";
 import AgentRoute from "./AgentRoite";
 import AgentUpdateProperty from "../Dashboard/AgentUpdateProperty";
 import Payment from "../Dashboard/Payment/Payment";
+import AdminProfile from "../Dashboard/AdminProfile";
+import AdminProperties from "../Dashboard/AdminProperties";
+import AdminUsers from "../Dashboard/AdminUsers";
+import AdminReviews from "../Dashboard/AdminReviews";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -164,9 +169,43 @@ export const router = createBrowserRouter([
       },
       {
         path: "payment",
-        element: <Payment></Payment>,
-        // loader: ({ params }) =>
-        //   fetch(`http://localhost:5000/property/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <Payment></Payment>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "admin-profile",
+        element: (
+          <AdminRoute>
+            <AdminProfile></AdminProfile>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "admin-properties",
+        element: (
+          <AdminRoute>
+            <AdminProperties></AdminProperties>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "admin-users",
+        element: (
+          <AdminRoute>
+            <AdminUsers></AdminUsers>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "admin-reviews",
+        element: (
+          <AdminRoute>
+            <AdminReviews></AdminReviews>
+          </AdminRoute>
+        ),
       },
     ],
   },

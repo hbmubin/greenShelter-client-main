@@ -48,7 +48,22 @@ const Dashboard = () => {
               </li>
             </>
           ) : role == "admin" ? (
-            <>Admin</>
+            <>
+              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+                <NavLink to="/dashboard/admin-profile">My Profile</NavLink>
+              </li>
+              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+                <NavLink to="/dashboard/admin-properties">
+                  Manage Properties
+                </NavLink>
+              </li>
+              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+                <NavLink to="/dashboard/admin-users">Manage Users</NavLink>
+              </li>
+              <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">
+                <NavLink to="/dashboard/admin-reviews">Manage reviews</NavLink>
+              </li>
+            </>
           ) : (
             <>
               <li className="flex justify-center items-center rounded-none text-white border-b-[1px] border-b-gray-600">

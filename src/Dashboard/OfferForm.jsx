@@ -57,6 +57,7 @@ const OfferForm = () => {
       propertyId: property._id,
       offeredAmount,
       buyerEmail: user.email,
+      agentEmail: property.agentEmail,
       offerDate,
       boughtStatus: "pending",
     };

@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ propertyData }) => {
   const stripe = useStripe();
@@ -11,8 +12,8 @@ const CheckoutForm = ({ propertyData }) => {
   const axiosSecure = useAxiosSecure();
   const { offeredAmount } = propertyData;
   const { user, loading } = useContext(AuthContext);
-
   const [paymentStatus, setPaymentStatus] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (propertyData.boughtStatus === "bought") {
@@ -66,6 +67,7 @@ const CheckoutForm = ({ propertyData }) => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate("/dashboard/user-bought");
         })
         .catch((error) => {
           console.log("Payment confirmation error", error);

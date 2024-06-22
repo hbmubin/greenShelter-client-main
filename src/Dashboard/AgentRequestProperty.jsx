@@ -11,7 +11,11 @@ const AgentRequestProperty = () => {
   const [offeredProperties, offeredLoading, error, offeredRefetch] =
     useAgentOffered();
   const [properties, propertiesLoading, refetch] = useAgentRequest();
-  // console.log(properties);
+
+  const modifiedProperties = properties.filter(
+    (property) => property.info.boughtStatus !== "bought"
+  );
+  console.log(modifiedProperties);
   if (loading || propertiesLoading) {
     return (
       <div className="flex w-full min-h-screen items-center justify-center">
@@ -50,7 +54,7 @@ const AgentRequestProperty = () => {
   return (
     <div className="min-h-screen">
       <div className="text-center py-14 text-3xl font-semibold">
-        <h1>Requested Property {`(${properties.length})`}</h1>
+        <h1>Requested Property {`(${modifiedProperties.length})`}</h1>
       </div>
       <div className="overflow-x-auto w-11/12 mx-auto border-[1px] rounded-lg">
         <table className="table table-zebra">
@@ -65,14 +69,14 @@ const AgentRequestProperty = () => {
             </tr>
           </thead>
           <tbody>
-            {properties.map((property, idx) => (
+            {modifiedProperties.map((property, idx) => (
               <tr key={idx}>
                 <td>{property.propertyTitle}</td>
                 <td>{property.propertyLocation}</td>
                 <td>{property.info.buyerInfo.buyerEmail}</td>
                 <td>{property.info.buyerInfo.buyerName}</td>
                 <th>${property.info.offeredAmount}</th>
-                <th className="flex justify-center">
+                <th className="text-center border-l-2">
                   {property.info.boughtStatus == "pending" ? (
                     <div className="flex gap-1">
                       <button

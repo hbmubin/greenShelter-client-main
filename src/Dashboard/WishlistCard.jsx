@@ -62,7 +62,7 @@ const WishlistCard = ({ property }) => {
           className=" absolute h-full w-full flex justify-between items-end  rounded-3xl"
         >
           <div className="ml-2 mb-2 text-white">
-            {priceRange.map((p, idx) => (
+            {priceRange?.map((p, idx) => (
               <span key={idx}>
                 ${p}
                 {idx === 0 && " - "}
