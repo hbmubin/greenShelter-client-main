@@ -101,10 +101,10 @@ const AgentUpdateProperty = () => {
               required
             />
           </div>
-          <div className="flex gap-4">
+          <div className="flex md:flex-row flex-col gap-4">
             <div className="">
               <input
-                className="input border-[1px] border-gray-300 rounded-3xl bg-gray-200"
+                className="w-full input border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                 type="text"
                 name="location"
                 defaultValue={property.propertyLocation}
@@ -112,10 +112,10 @@ const AgentUpdateProperty = () => {
               />
             </div>
             <div className="flex gap-4 items-center">
-              <div className="font-semibold">Price Range :</div>
+              <div className="font-semibold">Price Range:</div>
               <div>
                 <input
-                  className="input w-24 border-[1px] border-gray-300 rounded-3xl bg-gray-200"
+                  className="input md:w-24 w-20 border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                   type="number"
                   name="from"
                   defaultValue={property.priceRange[0]}
@@ -124,7 +124,7 @@ const AgentUpdateProperty = () => {
               </div>
               <div>
                 <input
-                  className="input w-24 border-[1px] border-gray-300 rounded-3xl bg-gray-200"
+                  className="input md:w-24 w-20 border-[1px] border-gray-300 rounded-3xl bg-gray-200"
                   type="number"
                   name="to"
                   defaultValue={property.priceRange[1]}
@@ -133,7 +133,7 @@ const AgentUpdateProperty = () => {
               </div>
             </div>
           </div>
-          <div className="flex gap-4">
+          <div className="flex md:flex-row flex-col gap-4">
             <div className="w-full">
               <input
                 className="input w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"
@@ -159,7 +159,7 @@ const AgentUpdateProperty = () => {
               required
             ></textarea>
           </div>
-          <div className="flex gap-4">
+          <div className="flex md:flex-row flex-col gap-4">
             <div className="w-full">
               <input
                 className="file-input w-full border-[1px] border-gray-300 rounded-3xl bg-gray-200"
