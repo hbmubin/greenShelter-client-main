@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const UserBoughtCard = ({ property }) => {
   const { propertyDetails, propertyId } = property;
-  const { offeredAmount, offeredDate, boughtStatus } = property;
+  const { offeredAmount, paymentId, boughtStatus } = property;
   const {
     propertyImage,
     propertyTitle,
@@ -14,6 +14,7 @@ const UserBoughtCard = ({ property }) => {
   } = propertyDetails;
   // console.log(boughtPropertyInfo);
   // console.log(boughtPropertyInfo.broughtStatus);
+  // console.log(paymentId);
   // console.log(property);
 
   return (
@@ -63,6 +64,14 @@ const UserBoughtCard = ({ property }) => {
               Pay Now
             </button>
           </Link>
+        )}
+        {boughtStatus == "bought" && (
+          <div>
+            <h2 className="text-center"> Transaction Id:</h2>
+            <button className="btn w-full rounded-3xl text-green-400 bg-gray-200 mt-2">
+              {paymentId}
+            </button>
+          </div>
         )}
       </div>
     </div>
