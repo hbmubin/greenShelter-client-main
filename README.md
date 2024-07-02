@@ -64,6 +64,5 @@ Before you begin, ensure you have the following installed on your system:
 7. **Run the Project**:
  ```bash
     npm start
-**Feel free to explore, contribute, or report issues. Thank you for checking out Green Shelter!**
 
 
