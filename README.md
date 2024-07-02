@@ -50,7 +50,7 @@ Before you begin, ensure you have the following installed on your system:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/green-shelter.git
+   git clone https://github.com/hbmubin/greenShelter-client-main.git
 2. **Navigate to the Project Directory**:
       ```bash
    cd green-shelter
