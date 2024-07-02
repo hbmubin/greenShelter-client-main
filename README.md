@@ -1,15 +1,11 @@
 # Green Shelter
 
-Welcome to Green Shelter, a comprehensive real estate platform designed to simplify the property buying, selling, and managing experience.
+Welcome to Green Shelter, a comprehensive real estate platform that simplifies property buying, selling, and managing experience.
 
 ## Live Site
 
 https://greeen-shelter.web.app
 
-<-- ## Admin Credentials
-
-- **Email/Username:** admin@admin.com
-- **Password:** Admin#01716 -->
 
 ## Features
 
