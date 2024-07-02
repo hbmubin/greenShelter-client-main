@@ -1,43 +1,43 @@
 # Green Shelter
 
-Welcome to Green Shelter, a comprehensive real estate platform that simplifies the property buying, selling, and managing experience.
+Green Shelter simplifies property buying, selling, and management.
 
 ## Live Site
 [Green Shelter](https://greeen-shelter.web.app)
 
 ## Features
 
-### General Features
-- **Authentication**: Secure login and registration system using JWT.
-- **Property Viewing**: Browse through a wide range of properties with detailed descriptions and images.
+### General
+- **Authentication**: Secure login using JWT.
+- **Property Viewing**: Browse detailed property listings.
 
-### User Features
-- **Wishlist**: Users can add properties to their wishlist for easy access later.
-- **Card Payment**: Secure card payment system for purchasing properties.
-- **Price Offers**: Users and agents can offer a price for a property.
-- **Property Reviews**: Users can leave reviews for properties.
+### User
+- **Wishlist**: Save properties for later.
+- **Card Payment**: Secure property purchases.
+- **Price Offers**: Submit property offers.
+- **Property Reviews**: Leave reviews.
 
-### Agent Features
-- **Add Property**: Agents can add new properties to the platform.
-- **Sell Property**: Manage and mark properties as sold.
+### Agent
+- **Add Property**: List new properties.
+- **Sell Property**: Manage sales.
 
-### Admin Features
-- **Dashboard**: Separate dashboard for managing different aspects of the site.
-- **Manage Properties**: Delete, reject, and advertise properties.
-- **Manage Users**: Delete users, mark users as fraud, promote users to agents or admins.
-- **Manage Reviews**: Oversee and manage property reviews.
+### Admin
+- **Dashboard**: Manage site aspects.
+- **Manage Properties**: Edit or advertise listings.
+- **Manage Users**: Moderate user activities.
+- **Manage Reviews**: Oversee reviews.
 
-## Technology Stack
-- **React Router**: For client-side routing.
-- **Tailwind CSS**: Utility-first CSS framework for styling.
-- **Daisy UI**: Component library built on Tailwind CSS.
-- **React Parallax**: Parallax scrolling effects.
-- **React Icons**: Include popular icons in your React projects easily.
-- **React Hook Form**: Performant, flexible, and extensible forms with easy-to-use validation.
-- **Mamba UI**: Beautiful UI components built with Tailwind CSS.
-- **Tanstack Query**: Powerful data-fetching and state management for React.
-- **JWT**: JSON Web Tokens for secure authentication.
-- **Axios**: Promise-based HTTP client for making requests to the server.
+## Tech Stack
+- **React Router**: Client-side routing
+- **Tailwind CSS**: Styling
+- **Daisy UI**: Component library
+- **React Parallax**: Scrolling effects
+- **React Icons**: Icon library
+- **React Hook Form**: Forms and validation
+- **Mamba UI**: UI components
+- **Tanstack Query**: Data fetching
+- **JWT**: Authentication
+- **Axios**: HTTP client
 
 ## Tutorial: How to Clone and Run Green Shelter
 
