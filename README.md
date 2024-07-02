@@ -54,12 +54,15 @@ Before you begin, ensure you have the following installed on your system:
 2. **Navigate to the Project Directory**:
    cd green-shelter
 3. **Install Dependencies**:
+    ```bash
    npm install
-4. **Set Up Environment Variables**:
+5. **Set Up Environment Variables**:
    Create a .env file in the root directory with:
+    ```bash
     REACT_APP_API_URL=http://localhost:5000/api
     REACT_APP_JWT_SECRET=your_jwt_secret_key
-5. **Run the Project**:
+7. **Run the Project**:
+ ```bash
     npm start
 
 
