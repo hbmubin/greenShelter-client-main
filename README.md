@@ -6,10 +6,10 @@ Welcome to Green Shelter, a comprehensive real estate platform designed to simpl
 
 https://greeen-shelter.web.app
 
-## Admin Credentials
+<-- ## Admin Credentials
 
 - **Email/Username:** admin@admin.com
-- **Password:** Admin#01716
+- **Password:** Admin#01716 -->
 
 ## Features
 
