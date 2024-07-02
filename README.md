@@ -3,7 +3,7 @@
 Green Shelter simplifies property buying, selling, and management.
 
 ## Live Site
-[Green Shelter](https://greeen-shelter.web.app)
+https://greeen-shelter.web.app
 
 ## Features
 
@@ -32,7 +32,7 @@ Green Shelter simplifies property buying, selling, and management.
 - **Tailwind CSS**: Styling
 - **Daisy UI**: Component library
 - **React Parallax**: Scrolling effects
-- **React Icons**: Icon library
+- **React Icons**: Icon Library
 - **React Hook Form**: Forms and validation
 - **Mamba UI**: UI components
 - **Tanstack Query**: Data fetching
@@ -52,8 +52,9 @@ Before you begin, ensure you have the following installed on your system:
    ```bash
    git clone https://github.com/yourusername/green-shelter.git
 2. **Navigate to the Project Directory**:
+      ```bash
    cd green-shelter
-3. **Install Dependencies**:
+4. **Install Dependencies**:
     ```bash
    npm install
 5. **Set Up Environment Variables**:
@@ -62,7 +63,8 @@ Before you begin, ensure you have the following installed on your system:
     REACT_APP_API_URL=http://localhost:5000/api
     REACT_APP_JWT_SECRET=your_jwt_secret_key
 7. **Run the Project**:
- ```bash
+    ```bash
     npm start
+## Thanks
 
 
