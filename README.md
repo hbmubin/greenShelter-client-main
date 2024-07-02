@@ -57,14 +57,9 @@ Before you begin, ensure you have the following installed on your system:
 4. **Install Dependencies**:
     ```bash
    npm install
-5. **Set Up Environment Variables**:
-   Create a .env file in the root directory with:
+5. **Run the Project**:
     ```bash
-    REACT_APP_API_URL=http://localhost:5000/api
-    REACT_APP_JWT_SECRET=your_jwt_secret_key
-7. **Run the Project**:
-    ```bash
-    npm start
+    npm run dev
 ## Thanks
 
 
