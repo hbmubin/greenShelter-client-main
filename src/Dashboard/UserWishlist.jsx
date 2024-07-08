@@ -15,7 +15,7 @@ const UserWishlist = () => {
       const fetchProperties = async () => {
         const propertyPromises = wishlist.map((id) =>
           axiosSecure
-            .get(`https://green-shelter-server-a-12.vercel.app/property/${id}`)
+            .get(`http://localhost:5000/property/${id}`)
             .then((response) => response.data)
         );
 

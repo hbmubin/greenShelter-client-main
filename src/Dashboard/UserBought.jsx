@@ -11,7 +11,7 @@ const UserBought = () => {
       const fetchedProperties = await Promise.all(
         propertiesBought.map(async (property) => {
           const res = await fetch(
-            `https://green-shelter-server-a-12.vercel.app/property/${property.propertyId}`
+            `http://localhost:5000/property/${property.propertyId}`
           );
           const data = await res.json();
           return { ...property, propertyDetails: data };

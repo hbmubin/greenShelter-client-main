@@ -9,7 +9,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { loading } = useContext(AuthContext);
   const [role, isRoleLoading] = useRole();
-  if (isRoleLoading || loading) {
+  if (!role && loading) {
     return (
       <div className="flex w-full py-28 items-center justify-center">
         <span className="loading loading-ring w-28"></span>

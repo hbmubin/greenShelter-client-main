@@ -45,16 +45,13 @@ const Login = () => {
         photoURL: result.user.photoURL,
         role: "user",
       };
-      fetch(
-        `https://green-shelter-server-a-12.vercel.app/users/${userInfo.email}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        }
-      )
+      fetch(`http://localhost:5000/users/${userInfo.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userInfo),
+      })
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

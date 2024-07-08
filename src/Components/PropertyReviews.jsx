@@ -54,16 +54,13 @@ const PropertyReviews = ({ property }) => {
       agentName,
     };
 
-    fetch(
-      `https://green-shelter-server-a-12.vercel.app/property/${_id}/review`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(reviewData),
-      }
-    )
+    fetch(`http://localhost:5000/property/${_id}/review`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reviewData),
+    })
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

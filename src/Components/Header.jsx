@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import useRole from "../Hooks/useRole";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
 const Header = () => {
   const { user, loading, logOut } = useContext(AuthContext);
-
+  const axiosPublic = useAxiosPublic();
   const [role, isRoleLoading] = useRole();
 
   const handleLogOut = () => {
@@ -23,6 +24,16 @@ const Header = () => {
       .catch((error) => console.log(error));
   };
 
+  const handlePaymentCreate = () => {
+    axiosPublic.post("/create-payment").then((res) => {
+      console.log(res);
+      const redirectUrl = res.data.paymentUrl;
+      if (redirectUrl) {
+        window.location.replace(redirectUrl);
+      }
+    });
+  };
+
   const links = (
     <>
       <li>
@@ -37,6 +48,11 @@ const Header = () => {
         >
           All properties
         </NavLink>
+      </li>
+      <li>
+        <a className="hover:text-orange-400 duration-300">
+          <button onClick={handlePaymentCreate}> checkout</button>
+        </a>
       </li>
       <li>
         <NavLink

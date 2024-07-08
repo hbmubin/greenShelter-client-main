@@ -27,6 +27,9 @@ import AdminUsers from "../Dashboard/AdminUsers";
 import AdminReviews from "../Dashboard/AdminReviews";
 import AdminRoute from "./AdminRoute";
 import AdminAdvertise from "../Dashboard/AdminAdvertise";
+import Checkout from "../Components/Checkout";
+import Fail from "../Components/Fail";
+import Cancel from "../Components/Cancel";
 
 export const router = createBrowserRouter([
   {
@@ -62,11 +65,34 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://green-shelter-server-a-12.vercel.app/property/${params.id}`
-          ),
+          fetch(`http://localhost:5000/property/${params.id}`),
       },
     ],
+  },
+
+  {
+    path: "/checkout",
+    element: (
+      <PrivateRoute>
+        <Checkout></Checkout>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/fail",
+    element: (
+      <PrivateRoute>
+        <Fail></Fail>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/cancel",
+    element: (
+      <PrivateRoute>
+        <Cancel></Cancel>
+      </PrivateRoute>
+    ),
   },
   {
     path: "dashboard",
@@ -118,9 +144,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://green-shelter-server-a-12.vercel.app/property/${params.id}`
-          ),
+          fetch(`http://localhost:5000/property/${params.id}`),
       },
       {
         path: "agent-profile",
@@ -170,9 +194,7 @@ export const router = createBrowserRouter([
           </AgentRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://green-shelter-server-a-12.vercel.app/property/${params.id}`
-          ),
+          fetch(`http://localhost:5000/property/${params.id}`),
       },
       {
         path: "payment",

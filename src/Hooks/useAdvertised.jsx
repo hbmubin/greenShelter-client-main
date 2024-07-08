@@ -4,7 +4,7 @@ const useAdvertised = () => {
   const [properties, setProperties] = useState([]);
   const [propertiesLoading, setPropertiesLoading] = useState(true);
   useEffect(() => {
-    fetch("https://green-shelter-server-a-12.vercel.app/advertised-properties")
+    fetch("http://localhost:5000/advertised-properties")
       .then((res) => res.json())
       .then((data) => {
         setProperties(data);
